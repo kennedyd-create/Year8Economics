@@ -231,7 +231,7 @@
             <div class="border-2 border-white/20 rounded-full px-3 py-1 inline-block bg-white/10 backdrop-blur shadow-sm">
                 <span class="font-bold text-xs tracking-widest text-whs-light">YEAR 8 SOCIAL SCIENCES · 13 LESSONS</span>
             </div>
-            <span id="version-badge" class="text-[10px] font-mono px-2 py-1 rounded-full bg-white/10 border border-white/20 text-blue-200">v2.2 · lessons</span>
+            <span id="version-badge" class="text-[10px] font-mono px-2 py-1 rounded-full bg-white/10 border border-white/20 text-blue-200">v2.3 · lessons</span>
             <button onclick="toggleDarkMode()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition border border-white/20 shadow-sm no-print" aria-label="Toggle dark mode">
                 <svg class="w-4 h-4 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 <svg class="w-4 h-4 block dark:hidden text-whs-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
@@ -504,6 +504,8 @@
 <section id="view-l3" class="view-section space-y-8 fade-in" role="tabpanel" aria-labelledby="tab-l3">
     <div id="lhead-3"></div>
 
+    <div id="lws-3"></div>
+
     <div id="lbook-3"></div>
 
     <div class="glass-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-300 dark:border-slate-700">
@@ -632,6 +634,8 @@
 <section id="view-l5" class="view-section space-y-8 fade-in" role="tabpanel" aria-labelledby="tab-l5">
     <div id="lhead-5"></div>
 
+    <div id="lws-5"></div>
+
     <div id="lbook-5"></div>
 
     <div class="glass-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-300 dark:border-slate-700">
@@ -721,6 +725,8 @@
 <!-- ============================= LESSON 7 ============================= -->
 <section id="view-l7" class="view-section space-y-8 fade-in" role="tabpanel" aria-labelledby="tab-l7">
     <div id="lhead-7"></div>
+
+    <div id="lws-7"></div>
 
     <div id="lbook-7"></div>
 
@@ -1337,12 +1343,12 @@
                     </div>
                 </div>
                 <div class="mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 text-xs text-slate-700 dark:text-slate-300">
-                    <strong class="text-blue-900 dark:text-blue-200">Editable copies.</strong> Word versions of all three sheets were delivered alongside this file, so you can change the wording, swap in a different example or adapt one for an individual student. The Word files are <strong>student copies only</strong> — the answer keys live here, so there is nothing to accidentally photocopy. Editing a Word file does not change the version on this page; the two will drift apart, and this one is the original. There is also a <strong>Download for Word</strong> button inside the print preview, which works on any sheet including the combined pack and the unit plan — handy for changing wording, though the ruled writing lines do not always survive the conversion. Print from the preview for the actual handout.
+                    <strong class="text-blue-900 dark:text-blue-200">Editable copies.</strong> Word versions of every sheet were delivered alongside this file, so you can change the wording, swap in a different example or adapt one for an individual student. The Word files are <strong>student copies only</strong> — the answer keys live here, so there is nothing to accidentally photocopy. Editing a Word file does not change the version on this page; the two will drift apart, and this one is the original. There is also a <strong>Download for Word</strong> button inside the print preview, which works on any sheet including the combined pack and the unit plan — handy for changing wording, though the ruled writing lines do not always survive the conversion. Print from the preview for the actual handout.
                 </div>
                 <div id="worksheet-list" class="space-y-3"></div>
                 <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 flex flex-wrap items-center justify-between gap-3">
-                    <p class="text-xs text-slate-600 dark:text-slate-400 max-w-xl">Photocopying for the whole unit at once? This puts all three sheets into a single print job with a page break between each — fourteen pages.</p>
-                    <button onclick="openWorksheet('all', false)" class="px-4 py-2 rounded-lg font-bold text-xs border-2 border-whs-dark dark:border-whs-gold text-whs-dark dark:text-whs-gold hover:bg-slate-100 dark:hover:bg-slate-700 transition whitespace-nowrap">🖨️ Print all three at once</button>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 max-w-xl">Photocopying for the whole unit at once? This puts <span id="ws-all-count">every sheet</span> into a single print job with a page break between each<span id="ws-all-pages"></span>.</p>
+                    <button onclick="openWorksheet('all', false)" class="px-4 py-2 rounded-lg font-bold text-xs border-2 border-whs-dark dark:border-whs-gold text-whs-dark dark:text-whs-gold hover:bg-slate-100 dark:hover:bg-slate-700 transition whitespace-nowrap">🖨️ Print them all at once</button>
                 </div>
             </div>
         </div>
@@ -3746,9 +3752,9 @@ l3: [
  { t:'big', text:'A sign saying "No refunds" does not cancel the law.',
    sub:'The Consumer Guarantees Act beats the sign, every time.',
    notes:'Students love this one. Ask if anyone has seen such a sign locally. It is a good reminder that a business can be wrong without being dishonest.' },
- { t:'activity', title:'Mind-map the three main rights', tab:'Lesson 3',
-   doList:['Open the hub → Lesson 3','Click through the Three Rs panel','Draw a mind-map: three rights, an icon for each','Use the glossary for any word you cannot define'],
-   notes:'Scaffolded template for students needing literacy support. Turn on the 🟢 X-Ray highlighter to make the legal language stand out on the page.' },
+ { t:'activity', title:'Mind-map the three main rights', tab:'Lesson 3', ws:true,
+   doList:['Open the hub → Lesson 3, or take a worksheet','Click through the Three Rs panel','Draw a mind-map: three rights, an icon for each','Use the glossary for any word you cannot define'],
+   notes:'Scaffolded template for students needing literacy support. Turn on the 🟢 X-Ray highlighter to make the legal language stand out on the page. The five-page worksheet (Teacher tab → Student worksheets) is the whole of test Section A on paper — definitions, the two Acts, the three guarantees, the Three Rs, minor versus substantial — and ends on the mind-map page, with a marking key.' },
  { t:'exit', notes:'Pair-share. If the partner cannot explain "fit for purpose" back, the mind-map is not finished.' }
 ],
 
@@ -3794,9 +3800,9 @@ l5: [
           '<strong>Step 2:</strong> used exactly as described, well inside the limit. Nothing done wrong.',
           '<strong>Step 3:</strong> unsafe and unfixable → substantial failure → <strong>Hemi chooses</strong> refund or replacement.'],
    notes:'Walk through this slowly, naming each step out loud as you go. Then do case 2 (the misleading vineyard tour ad) together before releasing them.' },
- { t:'activity', title:'Scenario Lab', tab:'Lesson 5',
-   doList:['Open the hub → Lesson 5','Case 1 is the paddleboard — we did it together','Work through cases 2 to 6','Four of the six are set here on Waiheke'],
-   notes:'Group students for this phase to encourage peer discussion. Case 5 (the influencer discount code) has a deliberately unsatisfying answer — no refund, because the product was fine. That is worth a whole-class discussion.' },
+ { t:'activity', title:'Scenario Lab', tab:'Lesson 5', ws:true,
+   doList:['Open the hub → Lesson 5, or take a worksheet','Case 1 is the paddleboard — we did it together','Work through cases 2 to 6','Four of the six are set here on Waiheke'],
+   notes:'Group students for this phase to encourage peer discussion. Case 5 (the influencer discount code) has a deliberately unsatisfying answer — no refund, because the product was fine. That is worth a whole-class discussion. The five-page worksheet (Teacher tab → Student worksheets) has Case 1 worked in full as a model, then the other five as three-step record sheets — useful even when the class is on devices, because it forces the reasoning to be written down.' },
  { t:'exit', notes:'Class vote on outcomes. Insist on justification — "refund" alone is not an answer.' }
 ],
 
@@ -3848,9 +3854,9 @@ l7: [
  { t:'big', text:'These tricks do not work by convincing you.',
    sub:'They work by rushing you, confusing you, or hiding the bit you would object to.',
    notes:'Which means the defence is not being clever — it is slowing down. Say that explicitly.' },
- { t:'activity', title:'Dark Pattern Hunt, then design your own', tab:'Lesson 7',
-   doList:['Open the hub → Lesson 7','Find all six markers on the ferry checkout','Read the "fair vs manipulative" comparison','Design your own two checkout screens — label every trick'],
-   notes:'Run the hunt on the projector first as the We Do, then release them. Blank UI template available for students who need one. Gallery walk at the end.' },
+ { t:'activity', title:'Dark Pattern Hunt, then design your own', tab:'Lesson 7', ws:true,
+   doList:['Open the hub → Lesson 7, or take a worksheet','Find all six markers on the ferry checkout','Read the "fair vs manipulative" comparison','Design your own two checkout screens — label every trick'],
+   notes:'Run the hunt on the projector first as the We Do, then release them. Gallery walk at the end. The five-page worksheet (Teacher tab → Student worksheets) prints the IslandFly checkout so students can circle and annotate it by hand, adds the drip-pricing calculation, and supplies the two blank phone screens for the design task — so it is the blank UI template as well as the hunt.' },
  { t:'exit', notes:'Ask which manipulative screen was the most convincing. The student who fooled their peers has understood it best.' }
 ],
 
@@ -4951,7 +4957,7 @@ var UNIT = {
         ['Progress is per-device.', 'XP, badges, quiz mistakes, project drafts and the assessment unlock are stored in that browser only. A student on a different laptop starts fresh — including the passcode.'],
         ['Two passcodes.', 'Teacher tab is <code>whs2026</code>. The student assessment passcode is in the red panel in the teacher section. Neither is real security.'],
         ['Project drafts are not submitted anywhere.', 'Students must print, export or copy their work out. The Print button produces a clean copy.'],
-        ['Three lessons have a paper worksheet.', 'Lessons 2, 9 and 10–11 each have a stand-alone printable sheet, with an answer key, in the teacher section.'],
+        ['Six lessons have a paper worksheet.', 'Lessons 2, 3, 5, 7, 9 and 10–11 each have a stand-alone printable sheet, with an answer key, in the teacher section. Between them they cover all three sections of the summative test.'],
         ['Every deck downloads as a PowerPoint.', 'One lesson or all twelve in a single file, teacher notes attached to each slide. That one step needs internet; nothing else on the page does.'],
         ['Every lesson says what goes in the book.', 'Title, activity, the exact notes to copy and what to do on the hub — on the lesson tab, on two slides in the deck, and in this plan.'],
         ['Everything prints.', 'Ctrl/Cmd+P prints all lessons at once with the navigation stripped, if you want paper versions.'],
@@ -6005,6 +6011,372 @@ function jumpTo(id) {
 function buildAllJumpStrips() {
     LESSON_PLAN.forEach(function (l) { buildJumpStrip(l.id); });
 }
+</script>
+
+<style>
+/* ---- extra print furniture for the lessons 3, 5 and 7 worksheets ---- */
+.ws-case { border:1.4px solid #333; border-radius:2mm; padding:3mm 3.5mm; margin-bottom:4mm; page-break-inside:avoid; }
+.ws-casehead { display:flex; align-items:baseline; gap:2.5mm; margin-bottom:1.5mm; }
+.ws-casehead .n { font-family:'JetBrains Mono',monospace; font-weight:800; font-size:9pt; color:#fff;
+    background:#002066; border-radius:1.2mm; padding:.6mm 2mm; }
+.ws-casehead .t { font-family:'Space Grotesk',system-ui,sans-serif; font-weight:800; font-size:10.5pt; color:#002066; }
+.ws-casehead .tag { margin-left:auto; font-size:7.5pt; font-weight:800; text-transform:uppercase; letter-spacing:.07em; color:#8b6508; }
+.ws-story { font-size:9.5pt; background:#f4f6f9; border-radius:1.5mm; padding:2.5mm 3mm; margin-bottom:2.5mm; }
+.ws-step3 { display:grid; grid-template-columns:34mm 1fr; gap:0; border:1px solid #999; border-radius:1.5mm; overflow:hidden; }
+.ws-step3 > div { border-top:1px solid #999; padding:2mm 2.5mm; }
+.ws-step3 > div:nth-child(1), .ws-step3 > div:nth-child(2) { border-top:0; }
+.ws-step3 .q { background:#f4f6f9; font-weight:700; font-size:8.5pt; }
+.ws-step3 .a { min-height:11mm; }
+
+/* mock checkout, print version */
+.ws-checkout { border:1.4px solid #333; border-radius:2mm; overflow:hidden; margin-bottom:3mm; max-width:118mm; }
+.ws-co-bar { background:#002066; color:#fff; padding:2mm 3mm; display:flex; justify-content:space-between; font-size:9pt; font-weight:800; }
+.ws-co-bar .timer { background:#b3261e; border-radius:1mm; padding:.4mm 1.8mm; font-family:'JetBrains Mono',monospace; }
+.ws-co-body { padding:3mm; font-size:9pt; }
+.ws-co-row { display:flex; justify-content:space-between; padding:1.4mm 0; border-bottom:1px dotted #bbb; }
+.ws-co-row:last-child { border-bottom:0; }
+.ws-co-total { display:flex; justify-content:space-between; font-weight:800; font-size:11pt; border-top:1.4px solid #333; padding-top:2mm; margin-top:1.5mm; }
+.ws-co-warn { font-size:8pt; color:#b3261e; font-weight:700; }
+.ws-co-tick { display:inline-block; width:3.2mm; height:3.2mm; border:1.2px solid #333; text-align:center; line-height:3mm; font-size:7pt; margin-right:1.5mm; }
+.ws-co-btn { text-align:center; border-radius:1.5mm; padding:2.2mm; font-weight:800; margin-top:2mm; }
+.ws-co-btn.big { background:#002066; color:#fff; font-size:10.5pt; }
+.ws-co-btn.grey { background:#eee; color:#999; font-size:8.5pt; border:1px solid #ddd; }
+.ws-co-small { font-size:7pt; color:#888; margin-top:1.5mm; }
+
+/* two blank phone screens for the design task */
+.ws-phones { display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
+.ws-phone { border:1.6px solid #333; border-radius:4mm; height:152mm; position:relative; overflow:hidden; }
+.ws-phone .cap { background:#002066; color:#fff; font-size:8pt; font-weight:800; text-transform:uppercase;
+    letter-spacing:.08em; padding:1.8mm 3mm; text-align:center; }
+.ws-phone.bad .cap { background:#8b6508; }
+.ws-phone .grid { height:calc(100% - 7mm); background:
+    repeating-linear-gradient(to bottom, transparent 0 7mm, #ededed 7mm 7.15mm); }
+</style>
+<script>
+/* =========================================================================
+   Worksheets for lessons 3, 5 and 7.
+   Same shape as the first three: a stand-alone paper version of the lesson,
+   with a red marking key behind the answers toggle.
+   ========================================================================= */
+
+/* ----------------------------------------------------------------- L3 -- */
+function wsLesson3() {
+    var F = 'Lesson 3 · Your Rights';
+    var p = [];
+
+    p.push(wsHead('Lesson 3', 'Your Rights',
+        'Identify the legal protections you have when you buy something in New Zealand. Every term on this sheet is examinable.')
+        + wsMeta()
+        + '<div class="ws-h2"><span class="n">1</span>Before you start</div>'
+        + wsCrit(['I can name the two main consumer laws and say what each one covers',
+                  'I can define acceptable quality, fit for purpose and remedy',
+                  'I can explain the difference between a minor and a substantial failure'])
+        + '<div class="ws-h3">Write your own definition. Do not look it up.</div>'
+        + '<p class="ws-note">A consumer right is…</p>'
+        + wsLines(2)
+        + wsAns('Something the law says a seller must do for you, whether they want to or not. It is not a favour and it cannot be cancelled by a sign in the shop.')
+
+        + '<div class="ws-h2"><span class="n">2</span>The two Acts</div>'
+        + '<p class="ws-p">One covers the <strong>quality of what you got</strong>. The other covers the <strong>truth of what you were told</strong>. Fill in the gaps.</p>'
+        + '<table class="ws-table"><thead><tr><th>Act</th><th>What it covers</th><th>An example of it being broken</th>'
+        + '<th class="ws-ansonly" style="background:#b3261e">Answer</th></tr></thead><tbody>'
+        + '<tr><td class="lbl">Consumer Guarantees Act 1993</td><td></td><td></td>'
+        + '<td class="ws-ansonly" style="background:#fdf2f1"><span class="ws-ans">Quality. A heater that catches fire.</span></td></tr>'
+        + '<tr><td class="lbl">Fair Trading Act 1986</td><td></td><td></td>'
+        + '<td class="ws-ansonly" style="background:#fdf2f1"><span class="ws-ans">Truth. A "was $2,499" price never actually charged.</span></td></tr>'
+        + '</tbody></table>'
+        + '<div class="ws-gold"><strong>The one-line version:</strong> <span style="border-bottom:1px solid #aaa;display:inline-block;width:62mm">&nbsp;</span> = quality, <span style="border-bottom:1px solid #aaa;display:inline-block;width:62mm">&nbsp;</span> = truth.</div>'
+        + wsAns('CGA = quality. FTA = truth. Keeping those two apart is worth marks in Section A of the test, and students who muddle them lose marks in Section B as well.')
+        + wsFoot(1, 5, F));
+
+    p.push('<div class="ws-h2"><span class="n">3</span>The three guarantees</div>'
+        + '<p class="ws-p">Under the Consumer Guarantees Act, anything you buy from a <strong>business</strong> must meet all three. Write the definition, then your own example.</p>'
+        + [['Acceptable quality', 'The product does what a reasonable person would expect it to do, and lasts a reasonable length of time.'],
+           ['Fit for purpose', 'It does the particular job you told the seller you needed it for.'],
+           ['Matches its description', 'It is actually the thing that was advertised — the right size, colour, model and specification.']]
+          .map(function (g) {
+            return '<div class="ws-box"><div class="cap">' + g[0] + '</div>'
+                + '<p style="font-size:9pt;color:#555;margin:0 0 1mm">In your own words:</p>' + wsLines(1, true)
+                + '<p style="font-size:9pt;color:#555;margin:1.5mm 0 1mm">Something you own that would break this guarantee:</p>' + wsLines(1, true)
+                + '<div class="ws-anbox ws-ansonly" style="margin:1.5mm 0 0"><div class="cap">Answer</div>' + g[1] + '</div>'
+                + '</div>';
+          }).join('')
+        + '<div class="ws-h3">Which guarantee is broken? Write A, F or M beside each.</div>'
+        + '<table class="ws-table"><tbody>'
+        + [['A jacket sold as "100% wool" that turns out to be polyester', 'M'],
+           ['A phone that stops charging after three weeks', 'A'],
+           ['Hiking boots you told the shop were for the Te Ara Hura track, that fall apart on gravel', 'F']]
+          .map(function (r) {
+            return '<tr><td>' + r[0] + '</td><td style="width:16mm"></td>'
+                + '<td class="ws-ansonly" style="width:16mm;background:#fdf2f1"><span class="ws-ans">' + r[1] + '</span></td></tr>';
+          }).join('')
+        + '</tbody></table>'
+        + wsFoot(2, 5, F));
+
+    p.push('<div class="ws-h2"><span class="n">4</span>The Three Rs</div>'
+        + '<p class="ws-p">When a guarantee is broken, the seller owes you a <strong>remedy</strong>. Complete the table.</p>'
+        + '<table class="ws-table"><thead><tr><th style="width:26mm">Remedy</th><th>What it means</th><th style="width:44mm">Who chooses it</th></tr></thead><tbody>'
+        + '<tr><td class="lbl">Repair</td><td></td><td></td></tr>'
+        + '<tr><td class="lbl">Replace</td><td></td><td></td></tr>'
+        + '<tr><td class="lbl">Refund</td><td></td><td></td></tr>'
+        + '</tbody></table>'
+        + wsAns('<strong>Repair:</strong> the seller fixes the fault, free, within a reasonable time. '
+              + '<strong>Replace:</strong> an identical item, or one of the same type and value. '
+              + '<strong>Refund:</strong> your money back — not a credit note, unless you agree to one. '
+              + 'Who chooses depends on the failure, not on the remedy: <strong>minor failure → the seller chooses</strong>; <strong>substantial failure → the buyer chooses</strong>.')
+
+        + '<div class="ws-h3">a) A store credit is offered instead of a refund. Do you have to accept it?</div>' + wsLines(3, true)
+        + '<div class="ws-h3">b) A shop has a sign reading "No refunds on sale items". Your sale-price speaker arrives faulty. What applies?</div>' + wsLines(3, true)
+        + '<div class="ws-h3">c) You bought a games console from someone on Facebook Marketplace and it will not turn on. Which of the Three Rs can you demand?</div>' + wsLines(3, true)
+        + wsAns('a) <strong>No.</strong> A credit note is only a refund if you agree to it. '
+              + 'b) The CGA still applies. A business cannot contract out of it for ordinary consumers, and a sign is not stronger than an Act of Parliament. '
+              + 'c) <strong>None.</strong> The CGA covers goods bought from a business. A private sale carries no guarantees — which is exactly why "who am I buying from?" is a question worth asking before the money moves.')
+        + wsFoot(3, 5, F));
+
+    var mvs = [
+        ['A heater found to be an electrical fire risk', 'S', 'Unsafe. Substantial every time.'],
+        ['$80 headphones with a crackle in one ear after three weeks', 'M', 'Annoying but fixable — the shop can repair it.'],
+        ['A $35 school shirt that shrinks two sizes in its first wash', 'S', 'Repair is impossible, and you would never have bought it knowing.'],
+        ['Shoes with one loose stitch on a seam', 'M', 'A small, fixable fault.'],
+        ['A bike whose brakes fail on the first ride', 'S', 'Unsafe.'],
+        ['A kettle with a scratch on the side that still boils perfectly', 'M', 'Cosmetic. It still does its job.']
+    ];
+    p.push('<div class="ws-h2"><span class="n">5</span>Minor or substantial?</div>'
+        + '<div class="ws-navy"><strong>Minor failure:</strong> can be put right without much trouble. <strong>The seller chooses</strong> the remedy.<br>'
+        + '<strong>Substantial failure:</strong> unsafe, or so serious you would never have bought it knowing. <strong>You choose</strong> the remedy.</div>'
+        + '<p class="ws-note">Write M or S, then one word of reason.</p>'
+        + '<table class="ws-table"><thead><tr><th>Situation</th><th style="width:16mm">M or S</th><th style="width:42mm">Because…</th>'
+        + '<th class="ws-ansonly" style="background:#b3261e">Answer</th></tr></thead><tbody>'
+        + mvs.map(function (r) {
+            return '<tr><td>' + r[0] + '</td><td></td><td></td>'
+                + '<td class="ws-ansonly" style="width:46mm;background:#fdf2f1"><span class="ws-ans">' + r[1] + '</span> — ' + r[2] + '</td></tr>';
+          }).join('')
+        + '</tbody></table>'
+        + '<div class="ws-h3">Why does it matter which one it is?</div>' + wsLines(3, true)
+        + '<div class="ws-h3">Take one of the six above and argue the <em>other</em> way. What would you have to show to make a marker accept it?</div>' + wsLines(3, true)
+        + wsAns('It decides <strong>who picks the remedy</strong> — the most commonly dropped mark in Section B. '
+              + 'On the second question, accept any answer arguing from the <em>test</em> rather than the price: the crackling headphones turn substantial if the fault is wiring that could overheat; the scratched kettle stays minor whatever is argued, because it still does its job.')
+        + wsFoot(4, 5, F));
+
+    p.push('<div class="ws-h2"><span class="n">6</span>Your rights, on one page</div>'
+        + '<p class="ws-note">Build a mind-map with three branches. Give each an icon and at least two facts. This is the page to revise from before the test.</p>'
+        + '<div class="ws-box dashed" style="height:150mm;position:relative">'
+        + '<div style="position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);border:1.6px solid #002066;border-radius:2mm;padding:2.5mm 5mm;font-weight:800;color:#002066">MY CONSUMER RIGHTS</div>'
+        + '<div style="position:absolute;left:4mm;top:5mm;font-size:8.5pt;font-weight:800;color:#8b6508">1. Consumer Guarantees Act</div>'
+        + '<div style="position:absolute;right:4mm;top:5mm;font-size:8.5pt;font-weight:800;color:#8b6508">2. Fair Trading Act</div>'
+        + '<div style="position:absolute;left:50%;bottom:4mm;transform:translateX(-50%);font-size:8.5pt;font-weight:800;color:#8b6508">3. The Three Rs</div>'
+        + '</div>'
+        + '<div class="ws-exit"><div class="cap">🎟️ Exit ticket</div>'
+        + '<p class="ws-p"><strong>Explain "fit for purpose" to a partner without reading it off the page. Then write what you said.</strong></p>'
+        + wsLines(2, true) + '</div>'
+        + wsFoot(5, 5, F));
+
+    return p;
+}
+
+/* ----------------------------------------------------------------- L5 -- */
+function wsCaseBlock(c, n, withWorked) {
+    var a1 = c.q1.opts.filter(function (o) { return o.ok; })[0].t;
+    var a2 = c.q2.opts.filter(function (o) { return o.ok; })[0].t;
+    var a3 = c.q3.opts.filter(function (o) { return o.ok; })[0].t;
+    /* one grid cell either way, so the 2×3 grid keeps its shape whether the
+       answers are showing or not */
+    function cell(ans) {
+        return withWorked
+            ? '<div class="a" style="background:#f4f6f9"><strong>' + esc(ans) + '</strong></div>'
+            : '<div class="a"><span class="ws-ansonly ws-ans">' + esc(ans) + '</span></div>';
+    }
+    return '<div class="ws-case">'
+        + '<div class="ws-casehead"><span class="n">' + n + '</span><span class="t">' + esc(c.title) + '</span>'
+        + '<span class="tag">' + esc(c.tag) + '</span></div>'
+        + '<div class="ws-story">' + esc(c.story) + '</div>'
+        + '<div class="ws-step3">'
+        + '<div class="q">1. Which right is in question?</div>' + cell(a1)
+        + '<div class="q">2. Did the buyer meet their responsibilities?</div>' + cell(a2)
+        + '<div class="q">3. What is the outcome, and why?</div>' + cell(a3)
+        + '</div></div>';
+}
+
+function wsLesson5() {
+    var F = 'Lesson 5 · Rights and Responsibilities in Action';
+    var p = [];
+
+    p.push(wsHead('Lesson 5', 'Rights &amp; Responsibilities in Action',
+        'Apply consumer law to everyday situations and work out the correct outcome. Four of the six cases are set here on Waiheke.')
+        + wsMeta()
+        + '<div class="ws-h2"><span class="n">1</span>The method</div>'
+        + '<div class="ws-navy">Every consumer problem is worked the <strong>same three steps, in the same order</strong>. Section B of the test is this method and nothing else, so it is worth getting automatic.</div>'
+        + '<table class="ws-table"><tbody>'
+        + '<tr><td class="lbl" style="width:12mm">1</td><td><strong>Which right is in question?</strong> Name the Act, then the guarantee — quality, fit for purpose, or matches its description.</td></tr>'
+        + '<tr><td class="lbl">2</td><td><strong>Did the buyer meet their responsibilities?</strong> Did they use it as intended, read the terms, check the seller was a business?</td></tr>'
+        + '<tr><td class="lbl">3</td><td><strong>What is the outcome, and why?</strong> Minor or substantial — and therefore who chooses the remedy.</td></tr>'
+        + '</tbody></table>'
+        + '<div class="ws-gold"><strong>Watch step 2.</strong> A buyer who misused the product, or bought privately, can be completely right about step 1 and still have no claim.</div>'
+        + wsCrit(['I can identify which right is in question in a real situation',
+                  'I can decide whether the buyer met their responsibilities',
+                  'I can justify the outcome — repair, replace, refund, or no claim'])
+        + wsFoot(1, 5, F));
+
+    p.push('<div class="ws-h2"><span class="n">2</span>Worked example — done for you</div>'
+        + wsCaseBlock(LAB[0], 1, true)
+        + '<div class="ws-gold"><strong>Notice the reasoning in step 3.</strong> "Substantial" is not a guess — the board is unsafe and cannot be repaired, and he would never have bought it knowing. That is why <em>Hemi</em> chooses, not the shop.</div>'
+        + '<div class="ws-h2"><span class="n">3</span>Your turn</div>'
+        + wsCaseBlock(LAB[1], 2, false)
+        + wsFoot(2, 5, F));
+
+    p.push(wsCaseBlock(LAB[2], 3, false) + wsCaseBlock(LAB[3], 4, false) + wsFoot(3, 5, F));
+    p.push(wsCaseBlock(LAB[4], 5, false) + wsCaseBlock(LAB[5], 6, false)
+        + '<div class="ws-anbox ws-ansonly"><div class="cap">The two that catch people out</div>'
+        + '<strong>Case 5</strong> — the product was fine, so there is nothing to remedy under the CGA. The problem is the undisclosed paid endorsement, and the remedy is regulatory rather than personal. Students find this genuinely unsatisfying, which is the point worth discussing. '
+        + '<strong>Case 6</strong> — a private sale sits outside the CGA entirely. "Perfect condition" may still be a false statement he relied on, but his real protection was checking the seller and testing the phone first.</div>'
+        + wsFoot(4, 5, F));
+
+    p.push('<div class="ws-h2"><span class="n">4</span>Write your own case</div>'
+        + '<p class="ws-note">Invent a Waiheke situation where the buyer is <strong>partly</strong> at fault, so the answer is not obvious. Swap with a partner and solve each other’s.</p>'
+        + '<div class="ws-box"><div class="cap">The situation</div>' + wsLines(4, true) + '</div>'
+        + '<div class="ws-box"><div class="cap">My answer, in three steps</div>' + wsLines(4, true) + '</div>'
+        + '<div class="ws-box dashed"><div class="cap">My partner’s answer</div>' + wsLines(3, true) + '</div>'
+        + '<div class="ws-exit"><div class="cap">🎟️ Exit ticket</div>'
+        + '<p class="ws-p"><strong>In the class vote, be ready to justify your outcome — not just state it. Write the one sentence you would say.</strong></p>'
+        + wsLines(2, true) + '</div>'
+        + wsFoot(5, 5, F));
+
+    return p;
+}
+
+/* ----------------------------------------------------------------- L7 -- */
+function wsCheckoutMock() {
+    return '<div class="ws-checkout">'
+        + '<div class="ws-co-bar"><span>IslandFly · Checkout</span><span class="timer">04:58</span></div>'
+        + '<div class="ws-co-body">'
+        + '<div class="ws-co-row"><span>Ferry + bus package — Matiatia to city</span><span>$29.00</span></div>'
+        + '<div class="ws-co-row"><span class="ws-co-warn">Only 2 seats left at this price!</span><span></span></div>'
+        + '<div class="ws-co-row"><span><span class="ws-co-tick">✓</span>Travel protection</span><span>$12.50</span></div>'
+        + '<div class="ws-co-row"><span>Booking service fee</span><span>$7.20</span></div>'
+        + '<div class="ws-co-row"><span>Payment processing charge</span><span>$6.00</span></div>'
+        + '<div class="ws-co-total"><span>Total</span><span>$54.70</span></div>'
+        + '<div class="ws-co-btn big">Flexible fare — recommended</div>'
+        + '<div class="ws-co-btn grey">Standard fare · no changes, no refunds</div>'
+        + '<div class="ws-co-small">No thanks, I will risk it</div>'
+        + '</div></div>';
+}
+
+function wsLesson7() {
+    var F = 'Lesson 7 · Dark Patterns';
+    var p = [];
+
+    p.push(wsHead('Lesson 7', 'Dark Patterns',
+        'Identify the ways app and website design is used to influence your decisions — then design a fair version yourself.')
+        + wsMeta()
+        + '<div class="ws-h2"><span class="n">1</span>Before you start</div>'
+        + wsCrit(['I can name at least four dark patterns and explain how each one works',
+                  'I can find dark patterns in a checkout screen I have not seen before',
+                  'I can design a fair version of the same screen'])
+        + '<div class="ws-h3">Write your own definition. Do not look it up.</div>'
+        + '<p class="ws-note">A dark pattern is…</p>'
+        + wsLines(2)
+        + wsAns('A design choice that pushes you towards a decision you would not make if you stopped to think. Note what it is <em>not</em>: it is not a lie. Most dark patterns say nothing false at all — the design does the work.')
+        + '<div class="ws-h2"><span class="n">2</span>The four to know</div>'
+        + '<table class="ws-table"><thead><tr><th style="width:44mm">Pattern</th><th>How it works on you</th></tr></thead><tbody>'
+        + ['Fake urgency', 'Hidden costs at the checkout', 'Pre-ticked add-ons', 'Confirmshaming']
+          .map(function (n) { return '<tr><td class="lbl">' + n + '</td><td style="height:13mm"></td></tr>'; }).join('')
+        + '</tbody></table>'
+        + wsAns('<strong>Fake urgency:</strong> a countdown that resets on reload. It removes the time you would have used to compare. '
+              + '<strong>Hidden costs:</strong> compulsory fees revealed one screen at a time, after you have mentally committed. '
+              + '<strong>Pre-ticked add-ons:</strong> silence is treated as yes. The most profitable of the lot. '
+              + '<strong>Confirmshaming:</strong> the decline wording makes a sensible choice feel foolish.')
+        + '<div class="ws-gold"><strong>Researchers found at least one dark pattern on 54% of New Zealand’s 100 most popular websites.</strong> Most are not illegal here — being able to name them is the defence.</div>'
+        + wsFoot(1, 5, F));
+
+    p.push('<div class="ws-h2"><span class="n">3</span>The hunt</div>'
+        + '<p class="ws-p">This checkout has <strong>six</strong> dark patterns in it. Circle each one on the screen, number it, then fill in the table.</p>'
+        + wsCheckoutMock()
+        + '<p class="ws-note">IslandFly is a fictional company created for this activity. Any resemblance to a real operator is unintended.</p>'
+        + '<div class="ws-h3">First, without analysing it: what would you actually have done on this screen?</div>' + wsLines(2, true)
+        + '<div class="ws-h3">Nothing on this screen is a lie. So how is it working on you?</div>' + wsLines(3, true)
+        + wsFoot(2, 5, F));
+
+    p.push('<div class="ws-h2"><span class="n">4</span>What did you find?</div>'
+        + '<table class="ws-table"><thead><tr><th style="width:10mm">#</th><th style="width:48mm">What I found</th><th>Why it works on a buyer</th></tr></thead><tbody>'
+        + [1,2,3,4,5,6].map(function (n) {
+            return '<tr><td class="lbl" style="width:10mm">' + n + '</td><td style="height:13mm"></td><td></td></tr>'; }).join('')
+        + '</tbody></table>'
+        + '<div class="ws-anbox ws-ansonly"><div class="cap">The six</div>'
+        + (typeof DP_SPOTS !== 'undefined'
+            ? '<ol style="margin:0;padding-left:5mm">' + DP_SPOTS.map(function (d) {
+                return '<li><strong>' + esc(d.name) + '</strong> — ' + esc(d.what) + '</li>'; }).join('') + '</ol>'
+            : '')
+        + '<p style="margin:2mm 0 0">The hardest to spot is usually the button hierarchy, because nothing false is said — the cheap option is simply made to look broken.</p></div>'
+        + '<div class="ws-h3">The $29 fare costs $54.70. By how much did the headline price understate the real one? Show your working.</div>'
+        + wsLines(2, true)
+        + wsAns('$54.70 − $29.00 = <strong>$25.70</strong>, which is <strong>89% more</strong> than the advertised price. Advertising a price nobody can actually pay is capable of misleading under the Fair Trading Act.')
+        + wsFoot(3, 5, F));
+
+    p.push('<div class="ws-h2"><span class="n">5</span>Design both versions</div>'
+        + '<p class="ws-note">Same product, two screens. On the manipulative one, <strong>label every trick you use</strong>. You are allowed to be good at this — noticing that you can do it is the point.</p>'
+        + '<p class="ws-p" style="margin-bottom:3mm">What are you selling? <span style="border-bottom:1px solid #aaa;display:inline-block;width:118mm">&nbsp;</span></p>'
+        + '<div class="ws-phones">'
+        + '<div class="ws-phone"><div class="cap">Fair design</div><div class="grid"></div></div>'
+        + '<div class="ws-phone bad"><div class="cap">Manipulative design</div><div class="grid"></div></div>'
+        + '</div>'
+        + wsFoot(4, 5, F));
+
+    var fair = (typeof FAIR_COMPARE !== 'undefined') ? FAIR_COMPARE : null;
+    p.push('<div class="ws-h2"><span class="n">6</span>Check your own design</div>'
+        + '<p class="ws-note">Six things separate a fair screen from a manipulative one. Tick the ones your fair design gets right.</p>'
+        + (fair
+            ? '<table class="ws-table"><thead><tr><th style="width:26mm">&nbsp;</th><th>Fair design does this</th><th class="ws-ansonly" style="background:#b3261e;width:56mm">The manipulative version</th></tr></thead><tbody>'
+              + fair[0].rows.map(function (r, i) {
+                  return '<tr><td class="lbl">☐ ' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td>'
+                      + '<td class="ws-ansonly"><span class="ws-ans">' + esc(fair[1].rows[i][1]) + '</span></td></tr>';
+                }).join('')
+              + '</tbody></table>'
+            : '')
+        + '<div class="ws-h3">Gallery walk: which manipulative screen in the class was the most convincing, and what made it work?</div>'
+        + wsLines(3, true)
+        + '<div class="ws-exit"><div class="cap">🎟️ Exit ticket</div>'
+        + '<p class="ws-p"><strong>Name one dark pattern you have met in real life this week, and what it was trying to get you to do.</strong></p>'
+        + wsLines(2, true) + '</div>'
+        + wsFoot(5, 5, F));
+
+    return p;
+}
+
+/* ------------------------------------------------------- register them -- */
+WORKSHEETS.l3 = { lesson:'Lesson 3', num:'3', title:'Your Rights',
+    blurb:'The definitional backbone of the unit and all of test Section A — the two Acts, the three guarantees, the Three Rs, minor versus substantial, and a mind-map page to revise from.',
+    pages:5, build:wsLesson3, file:'WHS-Y8-Money-L3-Your-Rights-worksheet' };
+
+WORKSHEETS.l5 = { lesson:'Lesson 5', num:'5', title:'Rights &amp; Responsibilities in Action',
+    blurb:'Test Section B in worksheet form. The three-step method, Case 1 worked in full, then the other five as record sheets, and a write-your-own case to swap with a partner.',
+    pages:5, build:wsLesson5, file:'WHS-Y8-Money-L5-Scenario-Lab-worksheet' };
+
+WORKSHEETS.l7 = { lesson:'Lesson 7', num:'7', title:'Dark Patterns',
+    blurb:'Test Section C. The four patterns to know, a printed IslandFly checkout to circle and annotate, the drip-pricing calculation, and two blank phone screens for the fair-versus-manipulative design task.',
+    pages:5, build:wsLesson7, file:'WHS-Y8-Money-L7-Dark-Patterns-worksheet' };
+
+WORKSHEETS._order = ['l2', 'l3', 'l5', 'l7', 'l9', 'l1011'];
+
+/* The combined pack and the two counts in the Worksheets pane are derived from
+   the registry rather than typed, so adding a seventh sheet later cannot leave
+   a stale "six sheets, twenty-nine pages" behind. */
+(function () {
+    var ord = WORKSHEETS._order,
+        pages = ord.reduce(function (n, k) { return n + WORKSHEETS[k].pages; }, 0),
+        words = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'],
+        count = words[ord.length] || ord.length;
+
+    WORKSHEETS.all.lesson = 'All ' + count;
+    WORKSHEETS.all.num = ord.map(function (k) { return WORKSHEETS[k].num; }).join(', ');
+    WORKSHEETS.all.pages = pages;
+    WORKSHEETS.all.blurb = 'All ' + count + ' student worksheets in one print job, with a page break between each. '
+        + 'Useful at the start of the unit if you would rather photocopy the lot in one go.';
+
+    var a = document.getElementById('ws-all-count');
+    if (a) a.textContent = 'all ' + count + ' sheets';
+    var b = document.getElementById('ws-all-pages');
+    if (b) b.textContent = ' — ' + pages + ' pages';
+})();
 </script>
 
 <script>
